@@ -1,0 +1,13 @@
+CREATE OR REPLACE PROCEDURE public.odeme()
+LANGUAGE 'sql'
+AS $BODY$select * FROM odeme$BODY$;
+
+CREATE OR REPLACE PROCEDURE public.cari()
+LANGUAGE 'sql'
+AS $BODY$select * FROM cari$BODY$;
+CREATE OR REPLACE PROCEDURE public.calisandurum()
+LANGUAGE 'sql'
+AS $BODY$select * FROM calisandurum$BODY$;
+CREATE OR REPLACE PROCEDURE public.bisiklet()
+LANGUAGE 'sql'
+AS $BODY$select * FROM bisiklet$BODY$;

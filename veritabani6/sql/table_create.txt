@@ -1,0 +1,110 @@
+CREATE TABLE public.admins
+(
+    admin_id integer NOT NULL DEFAULT nextval('admins_admin_id_seq'::regclass),
+    admin_kad character varying(20) COLLATE pg_catalog."default",
+    admin_password character varying(500) COLLATE pg_catalog."default",
+    admin_updated_at timestamp without time zone,
+    CONSTRAINT admins_pkey PRIMARY KEY (admin_id)
+)
+CREATE TABLE public.basvuru
+(
+    basvuru_id integer NOT NULL DEFAULT nextval('basvuru_basvuru_id_seq'::regclass),
+    basvuru_ad character varying(20) COLLATE pg_catalog."default",
+    basvuru_fiyat integer,
+    CONSTRAINT basvuru_pkey PRIMARY KEY (basvuru_id)
+)
+CREATE TABLE public.bdurum
+(
+    bdurum_id integer NOT NULL DEFAULT nextval('bdurum_bdurum_id_seq'::regclass),
+    bdurum_ogrenci_id integer,
+    CONSTRAINT bdurum_pkey PRIMARY KEY (bdurum_id)
+)
+CREATE TABLE public.bdurum_ihtiyac
+(
+    bdurum_ihtiyac_id integer NOT NULL DEFAULT nextval('bdurum_ihtiyac_bdurum_ihtiyac_id_seq'::regclass),
+    ihtiyac_miktar integer,
+    CONSTRAINT bdurum_ihtiyac_pkey PRIMARY KEY (bdurum_ihtiyac_id)
+)
+CREATE TABLE public.bisiklet
+(
+    bisiklet_id integer NOT NULL DEFAULT nextval('bisiklet_bisiklet_id_seq'::regclass),
+    bisiklet_ad character varying(100) COLLATE pg_catalog."default",
+    bisiklet_adres character varying(200) COLLATE pg_catalog."default",
+    CONSTRAINT bisiklet_pkey PRIMARY KEY (bisiklet_id)
+)
+CREATE TABLE public.bisikletolmayanlar
+(
+    olmayan_id integer NOT NULL DEFAULT nextval('yazili_yazili_id_seq'::regclass),
+    parca_ad character varying(20) COLLATE pg_catalog."default",
+    parca_fiyat integer,
+    CONSTRAINT yazili_pkey PRIMARY KEY (olmayan_id)
+)
+CREATE TABLE public.calisandurum
+(
+    durum_id integer NOT NULL DEFAULT nextval('ogrenci_durum_id_seq'::regclass),
+    calisan_ad character varying(30) COLLATE pg_catalog."default",
+    calisan_durum character varying COLLATE pg_catalog."default",
+    CONSTRAINT ogrenci_pkey PRIMARY KEY (durum_id)
+)
+CREATE TABLE public.calisanlar
+(
+    calisanlar_id integer NOT NULL DEFAULT nextval('ogrencis_ogrenci_id_seq'::regclass),
+    calisanlar_ad character varying(20) COLLATE pg_catalog."default",
+    CONSTRAINT ogrencis_pkey PRIMARY KEY (calisanlar_id)
+)
+CREATE TABLE public.cari
+(
+    cari_id integer NOT NULL DEFAULT nextval('cari_cari_id_seq'::regclass),
+    toplam numeric(100,0),
+    CONSTRAINT cari_pkey PRIMARY KEY (cari_id)
+)
+CREATE TABLE public.kasa
+(
+    kasa_id integer NOT NULL DEFAULT nextval('kasa_kasa_id_seq'::regclass),
+    basvurus_id integer,
+    durum_id integer,
+    ogrenci_id integer,
+    CONSTRAINT kasa_pkey PRIMARY KEY (kasa_id)
+)
+CREATE TABLE public.kesinti
+(
+    kesinti_id integer NOT NULL DEFAULT nextval('kesinti_kesinti_id_seq'::regclass),
+    kesinti_ad character varying(20) COLLATE pg_catalog."default",
+    kesinti_miktar numeric,
+    CONSTRAINT kesinti_pkey PRIMARY KEY (kesinti_id)
+)
+
+CREATE TABLE public.kesinti_all
+(
+    kesinti_all_id integer NOT NULL DEFAULT nextval('kesinti_all_kesinti_all_id_seq'::regclass),
+    basvuru_id integer,
+    days date,
+    CONSTRAINT kesinti_all_pkey PRIMARY KEY (kesinti_all_id)
+)
+
+
+CREATE TABLE public.odeme
+(
+    odeme_id integer NOT NULL DEFAULT nextval('odeme_odeme_id_seq'::regclass),
+    odeme_ad character varying COLLATE pg_catalog."default",
+    odeme_toplam numeric(100,0),
+    CONSTRAINT odeme_pkey PRIMARY KEY (odeme_id)
+)
+CREATE TABLE public.puantaj
+(
+    puan_id integer NOT NULL DEFAULT nextval('puantaj_puan_id_seq'::regclass),
+    basvuru_id integer,
+    days date,
+    CONSTRAINT puantaj_pkey PRIMARY KEY (puan_id)
+)
+
+
+CREATE TABLE public.tamirolcaklar
+(
+    tamir_id integer NOT NULL DEFAULT nextval('kayitli_kayitli_id_seq'::regclass),
+    tamir_ad character varying(20) COLLATE pg_catalog."default",
+    tamir_neden character varying(200) COLLATE pg_catalog."default",
+    CONSTRAINT kayitli_pkey PRIMARY KEY (tamir_id)
+)
+
+

@@ -1,0 +1,5 @@
+bisiklet.bisiklet_id=> bisiklet.tamirolucaklar
+cari.cari_id<> odeme.odeme_id
+kasa.basvuru_id=>basvuru.basvuru_id
+kasa.basvuru_id>=puantaj.puan_id
+kesinti_all.kesinti_all_id<>basvuru.basvuru_id
